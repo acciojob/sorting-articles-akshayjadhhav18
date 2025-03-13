@@ -14,16 +14,18 @@ const bands = [
     'An Old Dog'
 ];
 
+// Function to remove 'A', 'An', 'The' from the beginning of band names
 function stripArticle(bandName) {
     return bandName.replace(/^(a |an |the )/i, '').trim();
 }
 
-const sortedBands = bands.sort((a, b) => 
+// Sort the bands alphabetically, ignoring articles
+const sortedBands = bands.sort((a, b) =>
     stripArticle(a) > stripArticle(b) ? 1 : -1
 );
 
+// Append sorted bands to the DOM
 const bandList = document.getElementById('band');
-
 sortedBands.forEach(band => {
     const listItem = document.createElement('li');
     listItem.textContent = band;
